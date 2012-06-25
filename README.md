@@ -1,2 +1,2 @@
-vi-configure
+vi-configure file
 ============
