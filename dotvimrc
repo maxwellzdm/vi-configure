@@ -1,0 +1,49 @@
+" System vimrc file for MacVim
+"
+" Maintainer:	Bjorn Winckler <bjorn.winckler@gmail.com>
+" Last Change:	Sat Aug 29 2009
+
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk,ucs-bom,cp936
+
+set nocompatible
+
+" The default for 'backspace' is very confusing to new users, so change it to a
+" more sensible value.  Add "set backspace&" to your ~/.vimrc to reset it.
+
+" Disable localized menus for now since only some items are translated (e.g.
+" the entire MacVim menu is set up in a nib file which currently only is
+" translated to English)    
+
+set langmenu=none
+
+set number
+filetype plugin indent on
+syntax on
+set showmatch
+set ruler
+set incsearch
+set ignorecase
+set autoindent
+set autoread
+set hlsearch
+set history=50
+set ai
+
+map <silent> <F9> :TlistToggle<cr>
+colorscheme leo     
+
+"Tlist
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+"let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Left_Window = 1
+let Tlist_File_Fold_Auto_Close = 1
+
+"Folding
+set foldenable
+set foldmethod=manual
+
+
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
