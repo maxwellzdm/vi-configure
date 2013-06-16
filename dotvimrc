@@ -1,27 +1,67 @@
-" System vimrc file for MacVim
-"
-" Maintainer:	Bjorn Winckler <bjorn.winckler@gmail.com>
-" Last Change:	Sat Aug 29 2009
-
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-" The default for 'backspace' is very confusing to new users, so change it to a
-" more sensible value.  Add "set backspace&" to your ~/.vimrc to reset it.
+Bundle 'gmarik/vundle'
+Bundle 'L9'
 
-" Disable localized menus for now since only some items are translated (e.g.
-" the entire MacVim menu is set up in a nib file which currently only is
-" translated to English)    
+Bundle 'The-NERD-tree'
+"The-NERD-tree config
+nmap <silent> <C-m> :NERDTreeToggle<cr>
+let NERDChristmasTree = 1
+"close the nerdtree when open a file
+let NERDTreeQuitOnOpen = 0
 
-set langmenu=none
+"Bundle 'minibufexplorerpp'
+Bundle 'Tagbar'
+nmap <silent> <F9> :TagbarToggle<cr>
 
-set number
+Bundle 'ZoomWin'
+Bundle 'leo256'
+Bundle 'AutoComplPop'
+Bundle 'Command-T'
+"mapping the leader key
+let mapleader = ","
+let CommandTMatchWindowAtTop = 0
+let CommandTMaxHeight = 10
+
+"cscope based
+Bundle 'indexer.tar.gz'
+Bundle 'DfrankUtil'
+Bundle 'vimprj'
+
+"check coding syntax
+Bundle 'Syntastic'
+
+Bundle 'snipMate'
+
+Bundle 'vim-multiple-cursors'
+imap <C-e> <End>
+nmap <C-e> <End>
+
+"only support for C
+"Bundle 'CCTree'
+
+"
+"Brief help
+":BundleList            -list configured bundles
+":BundleInstall(!)      -install(update) bundles
+":BundleSearch(!) foo   -search(or refresh cache first) for foo
+":BundleClean(!)        -confirm(or auto-approve) removal of unused bundles
+"
+"see :h vundle for more details or wiki for FAQ
+"NOTE: comments after Bundle comand are not allowed.
+
 filetype plugin indent on
+set langmenu=none
+set number
 syntax on
 set showmatch
-set ruler
+set ruler 
 set incsearch
 set ignorecase
 set autoindent
@@ -29,21 +69,11 @@ set autoread
 set hlsearch
 set history=50
 set ai
-
-map <silent> <F9> :TlistToggle<cr>
-colorscheme leo     
-
-"Tlist
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-"let Tlist_Show_One_File = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_Left_Window = 1
-let Tlist_File_Fold_Auto_Close = 1
-
-"Folding
-set foldenable
-set foldmethod=manual
-
-
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set foldenable " Turn on folding
+"save folding session
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+colorscheme leo
